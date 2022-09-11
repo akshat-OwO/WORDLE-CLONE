@@ -1,8 +1,21 @@
+import { useEffect } from 'react';
+import { useState } from 'react';
+import { data } from '../data/db';
+
 function App() {
+  const [solution, setSolution ] = useState(null);
+
+  useEffect(() => {
+    // random int from 0 to 14
+    const randomSolution = data[Math.floor(Math.random() * data.length)];
+    console.log(randomSolution);
+    setSolution(randomSolution.word);
+  }, [setSolution]);
 
   return (
     <div className="App">
       <h1>Wordle</h1>
+      {solution && <div>Solution is: {solution}</div>}
     </div>
   );
 }
